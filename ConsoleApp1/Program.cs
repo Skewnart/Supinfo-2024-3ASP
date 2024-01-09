@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1.J2PM
+﻿namespace ConsoleApp1
 {
     internal class Program
     {
