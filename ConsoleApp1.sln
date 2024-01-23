@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProbeLibraryJ2PMp2", "Probe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProbeAppJ2PMp2", "ProbeAppJ2PMp2\ProbeAppJ2PMp2.csproj", "{28CC28F4-9031-48F2-9768-3A63BBBB565A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentationEF", "PresentationEF\PresentationEF.csproj", "{D833282B-C7C6-40EC-8F21-83E9ACDF016A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresentationEF", "PresentationEF\PresentationEF.csproj", "{D833282B-C7C6-40EC-8F21-83E9ACDF016A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{1989CAB2-9D5E-42F2-A941-9C9E073858A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D833282B-C7C6-40EC-8F21-83E9ACDF016A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D833282B-C7C6-40EC-8F21-83E9ACDF016A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D833282B-C7C6-40EC-8F21-83E9ACDF016A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1989CAB2-9D5E-42F2-A941-9C9E073858A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1989CAB2-9D5E-42F2-A941-9C9E073858A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1989CAB2-9D5E-42F2-A941-9C9E073858A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1989CAB2-9D5E-42F2-A941-9C9E073858A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
