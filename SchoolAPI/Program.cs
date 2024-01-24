@@ -1,5 +1,6 @@
 
 using SchoolAPI.Services;
+using System.Reflection;
 
 namespace SchoolAPI
 {
@@ -14,7 +15,19 @@ namespace SchoolAPI
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                    Version = "v1",
+                    Title = "School API"
+                });
+
+                c.IncludeXmlComments(xmlPath);
+            });
 
             builder.Services.AddSingleton<ISchoolAPI, SchoolEFService>();
 

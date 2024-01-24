@@ -7,20 +7,28 @@ using SchoolAPI.Services;
 
 namespace SchoolAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/stud/")]
     [ApiController]
     [ExecutedReqFilter]
     public class StudentsController : ControllerBase
     {
-        // GET: api/<StudentsController>
+        /// <summary>
+        /// L'action pour faire un Get sur l'Entity Framework
+        /// </summary>
+        /// <param name="schoolApi"></param>
+        /// <returns></returns>
+        /// <response code="200">Returns all students</response>
         [HttpGet]
+        [Produces("application/json")]
+        [ProducesResponseType(400)]
+        [Route("getall")]
         public IActionResult Get(ISchoolAPI schoolApi)
         {
             return Ok(schoolApi.GetStudents());
         }
 
-        // GET api/<StudentsController>/5
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("getby")]
         public IActionResult Get(ISchoolAPI schoolApi, int id)
         {
             var student = schoolApi.GetStudentById(id);
@@ -29,15 +37,15 @@ namespace SchoolAPI.Controllers
             return Ok(student);
         }
 
-        // POST api/<StudentsController>
         [HttpPost]
+        [Route("new")]
         public IActionResult Post(ISchoolAPI schoolApi, [FromBody] Student student)
         {
             try
             {
                 var id = schoolApi.CreateStudent(student);
 
-                return Created($"/api/Student/{id}", id);
+                return Created($"/api/stud/{id}", id);
             }
             catch (Exception ex)
             {
@@ -45,16 +53,16 @@ namespace SchoolAPI.Controllers
             }
         }
 
-        // PUT api/<StudentsController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
+        [Route("update")]
         public IActionResult Put(ISchoolAPI schoolApi, int id, [FromBody] Student student)
         {
             schoolApi.UpdateStudent(id, student);
             return Ok();
         }
 
-        // DELETE api/<StudentsController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete]
+        [Route("delete")]
         public IActionResult Delete(ISchoolAPI schoolApi, int id)
         {
             schoolApi.RemoveStudent(id);
