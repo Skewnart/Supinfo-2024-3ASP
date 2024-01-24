@@ -11,14 +11,7 @@ namespace SchoolAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            //builder.WebHost.UseHttpSys(o =>
-            //{
-            //    o.AllowSynchronousIO = false;
-            //    o.Authentication.Schemes = AuthenticationSchemes.None;
-            //    o.Authentication.AllowAnonymous = true;
-            //    o.MaxConnections = null;
-            //    o.MaxRequestBodySize = 31457280;
-            //});
+            // Add services to the container.
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
