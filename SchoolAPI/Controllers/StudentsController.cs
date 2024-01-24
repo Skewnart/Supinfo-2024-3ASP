@@ -1,4 +1,5 @@
 ﻿using DalJ4.Model;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using SchoolAPI.Filters;
 using SchoolAPI.Services;
@@ -22,6 +23,7 @@ namespace SchoolAPI.Controllers
         [Produces("application/json")]
         [ProducesResponseType(400)]
         [Route("getall")]
+        [EnableCors("MyCustomPolicy")]
         public IActionResult Get(ISchoolAPI schoolApi)
         {
             return Ok(schoolApi.GetStudents());

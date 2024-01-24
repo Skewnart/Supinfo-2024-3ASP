@@ -1,4 +1,5 @@
 
+using Microsoft.AspNetCore.Server.HttpSys;
 using SchoolAPI.Services;
 using System.Reflection;
 
@@ -10,7 +11,14 @@ namespace SchoolAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            //builder.WebHost.UseHttpSys(o =>
+            //{
+            //    o.AllowSynchronousIO = false;
+            //    o.Authentication.Schemes = AuthenticationSchemes.None;
+            //    o.Authentication.AllowAnonymous = true;
+            //    o.MaxConnections = null;
+            //    o.MaxRequestBodySize = 31457280;
+            //});
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -29,6 +37,22 @@ namespace SchoolAPI
                 c.IncludeXmlComments(xmlPath);
             });
 
+            builder.Services.AddCors(c =>
+            {
+                c.AddDefaultPolicy(p =>
+                {
+                    p.AllowAnyOrigin();
+                    p.AllowAnyMethod();
+                    p.AllowAnyHeader();
+                });
+
+                c.AddPolicy("MyCustomPolicy", p =>
+                {
+                    p.AllowAnyOrigin();
+                    p.WithMethods("GET");
+                });
+            });
+
             builder.Services.AddSingleton<ISchoolAPI, SchoolEFService>();
 
             var app = builder.Build();
@@ -40,10 +64,10 @@ namespace SchoolAPI
                 app.UseSwaggerUI();
             }
 
+            app.UseCors();
+
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
 
             app.MapControllers();
 
